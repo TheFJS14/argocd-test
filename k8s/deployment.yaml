@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hono-api
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: hono-api
+  template:
+    metadata:
+      labels:
+        app: hono-api
+    spec:
+      containers:
+        - name: api
+          image: ghcr.io/thefjs14/argocd-test:latest
+          ports:
+            - containerPort: 5544
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5544
+            initialDelaySeconds: 5
+            periodSeconds: 10
