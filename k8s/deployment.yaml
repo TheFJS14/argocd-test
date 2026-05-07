@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: ghcr.io/thefjs14/argocd-test:latest
+          image: ghcr.io/thefjs14/argocd-test:sha-a98ff3e
           ports:
             - containerPort: 5544
           readinessProbe:
